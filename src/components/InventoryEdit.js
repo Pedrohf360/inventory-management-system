@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 
-const InventoryForm = ({ onSubmit }) => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [quantity, setQuantity] = useState(0);
-  const [price, setPrice] = useState(0);
+const InventoryEdit = ({ item, onSubmit }) => {
+  const [name, setName] = useState(item.name);
+  const [description, setDescription] = useState(item.description);
+  const [quantity, setQuantity] = useState(item.quantity);
+  const [price, setPrice] = useState(item.price);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && description && quantity && price) {
-      onSubmit({ name, description, quantity, price });
-    } else {
-      alert("Please fill in all required fields.");
-    }
+    onSubmit({ id: item.id, name, description, quantity, price });
   };
 
   return (
@@ -45,9 +41,9 @@ const InventoryForm = ({ onSubmit }) => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <button type="submit">Add Item</button>
+      <button type="submit">Update Item</button>
     </form>
   );
 };
 
-export default InventoryForm;
+export default InventoryEdit;

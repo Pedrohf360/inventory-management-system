@@ -3,7 +3,7 @@ import React from "react";
 const InventoryItem = ({ item }) => {
   return (
     <li>
-      {item.name} - {item.quantity}
+      {item.name} - {item.description} - {item.quantity} - {item.price}
     </li>
   );
 };
